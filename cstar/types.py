@@ -5,7 +5,7 @@ import numpy as np
 _CONTEXT_STACK = []
 
 
-class ToposError(Exception):
+class ObstructionError(Exception):
     """Raised when physical constraints (commutativity, cohomology) are violated."""
 
     pass
@@ -22,7 +22,7 @@ class Observable:
         self.matrix = np.array(matrix, dtype=complex)
 
         if not np.allclose(self.matrix, self.matrix.conj().T):
-            raise ToposError(f"Observable '{name}' is not Hermitian.")
+            raise ObstructionError(f"Observable '{name}' is not Hermitian.")
 
     def __repr__(self):
         return f"<Observable: {self.name}>"
@@ -67,7 +67,7 @@ class Context:
             for op_b in self.observables[i + 1 :]:
                 comm = op_a.matrix @ op_b.matrix - op_b.matrix @ op_a.matrix
                 if not np.allclose(comm, 0, atol=1e-9):
-                    raise ToposError(
+                    raise ObstructionError(
                         f"Context '{self.name}' is invalid. "
                         f"'{op_a.name}' and '{op_b.name}' do not commute."
                     )
@@ -147,5 +147,5 @@ class System:
         """
         ctx = _get_current_context()
         if not ctx:
-            raise ToposError("Cannot measure outside a Context.")
+            raise ObstructionError("Cannot measure outside a Context.")
         return ctx.observables[0]
