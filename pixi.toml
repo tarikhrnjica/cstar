@@ -8,3 +8,4 @@ version = "0.1.0"
 [tasks]
 
 [dependencies]
+ruff = ">=0.14.14,<0.15"
