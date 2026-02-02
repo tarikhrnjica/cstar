@@ -79,7 +79,7 @@ More formally, the compiler constitutes a functor $\mathcal{F}: \mathcal{V}(\mat
 
 #### 1. Graph wiring
 
-The compiler assembles the **cover's nerve**, a simplicial complex where
+The compiler starts by assembling the **cover's nerve**, a simplicial complex where
 
 - **Nodes** are the `Context` instances that appear in your code.
 - **Edges** correspond to the intersections of contexts (shared observables).
@@ -110,7 +110,7 @@ In other words, it solves for the optimal path of unitary gates (basis rotations
 
 ### Quantum Error Correction
 
-The mechanism C* uses to verify logic (cohomology check) is isomorphic to the toric or surface code that hardware uses to correct errors.
+The mechanism C* uses to verify logic (cohomology check) is isomorphic to the **surface code** (or toric code) that hardware uses to correct errors.
 
 
 |C* Compiler (Software)|Surface Code (Hardware)|Homological Connection                 |
@@ -121,4 +121,4 @@ The mechanism C* uses to verify logic (cohomology check) is isomorphic to the to
 |Constraint violation  |Syndrome (anyon)       |Boundary and coboundary                |
 |Logical paradox       |Logical error          |Nontrivial homology cycle              |
 
-In a surface code, the decoder identifies syndromes (topological defects) and attempts to pair them off to restore the vacuum state. C* generalizes this: it treats logical inconsistencies in your source code as *semantic syndromes*. The compiler behaves as a high-level QEC decoder, making sure that the topology of your *concepts* is free of obstructions before the program ever touches the physical qubits.
+In a surface code, the decoder identifies syndromes (topological defects) and attempts to pair them off to restore the vacuum state. C* generalizes this by considering logical inconsistencies in your source code as **semantic syndromes**. The compiler essentially behaves like a high-level QEC decoder, making sure that the topology of your *concepts* is free of obstructions before the program ever touches the physical qubits.
