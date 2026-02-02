@@ -98,12 +98,20 @@ class Sieve:
         self.context = context
 
     @classmethod
-    def Min(cls):
-        return cls(np.zeros((2, 2)))
+    def Min(cls, dim: int):
+        """
+        The Minimal Sieve (False / Bottom / \bot).
+        The empty set in the topology.
+        """
+        return cls(np.zeros((dim, dim)))
 
     @classmethod
-    def Max(cls):
-        return cls(np.eye(2))
+    def Max(cls, dim: int):
+        """
+        The Maximal Sieve (True / Top / \top).
+        The entire space in the topology (Identity Matrix).
+        """
+        return cls(np.eye(dim))
 
     def __repr__(self):
         dim = np.trace(self.projector)
