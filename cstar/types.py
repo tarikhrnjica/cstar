@@ -98,13 +98,11 @@ class Sieve:
         self.context = context
 
     @classmethod
-    def Empty(cls):
-        """Represents 'False' (The Zero Operator)"""
+    def Min(cls):
         return cls(np.zeros((2, 2)))
 
     @classmethod
-    def Identity(cls):
-        """Represents 'True' (The Identity Operator)"""
+    def Max(cls):
         return cls(np.eye(2))
 
     def __repr__(self):
