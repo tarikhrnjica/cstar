@@ -127,7 +127,7 @@ In a surface code, the decoder identifies syndromes (topological defects) and at
 
 For small systems, the cohomology checks can run on a classical CPU. However, the number of possible contexts grows exponentially in the number of qubits, rendering classical verification intractable.
 
-Hence C* is designed to be bootstrapped on a QPU to compile its own logic:
+Fortunately, C* can (at least in theory) be bootstrapped on a QPU to efficiently compile its own logic:
 
 1. Step 3 requires inverting the Laplacian matrix. While classically this is $O(N^3)$, the **Harrow–Hassidim–Lloyd (HHL) algorithm** can perform this in $O(\log N)$ time.
 2. Step 2 depends on diagonalization. The **quantum phase estimation (QPE) algorithm** replaces classical eigendecomposition, collapsing wavefunctions into their spectral components natively.
