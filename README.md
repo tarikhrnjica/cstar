@@ -71,7 +71,9 @@ This allows the program to deal with Heisenberg uncertainty not as a runtime err
 
 ## Compilation
 
-The C* compiler does not merely transliterate source code into gate sequences; it acts as a **homological geometer**. It views your program as a topology and solves for the global section that satisfies your constraints.
+The C* compiler does not merely transliterate source code into gate sequences; it acts as a **homological geometer**. By viewing your program as a topology, it finds the global section that satisfies your constraints.
+
+More formally, the compiler constitutes a functor $\mathcal{F}: \mathcal{V}(\mathcal{H}) \to \mathrm{Circ}$ between the category of contexts and the category of quantum circuits, mapping categorical logic into physical operations. 
 
 ### Steps
 
@@ -79,23 +81,29 @@ The C* compiler does not merely transliterate source code into gate sequences; i
 
 The compiler assembles the **cover's nerve**, a simplicial complex where
 
-- **Nodes** are the `Context` instances.
+- **Nodes** are the `Context` instances that appear in your code.
 - **Edges** correspond to the intersections of contexts (shared observables).
-- **Faces** represent triple intersections. 
+- **Faces** represent triple intersections.
 
 #### 2. Spectral analysis
 
-Next, the compiler populates this graph with local data. For every context node, it computes the **Gelfand spectrum** (eigenvalues) of the operators defined there, producing the spectral presheaf.
+Next, the compiler populates this graph with local data. For every context node $V$, it computes the **Gelfand spectrum** $\Sigma_V$ of the operators defined there, thus producing the spectral presheaf $\underline{\Sigma}$.
 
 #### 3. Cohomology validation
 
-Before generating a quantum gate, the compiler calculates the **sheaf cohomology group** $H^1$ of your logic using the combinatorial Laplacian.
+Before generating a quantum gate, the compiler calculates the **sheaf cohomology group** $H^1(\mathcal{N}(\mathcal{U}), \underline{\Sigma})$ of your logic using the combinatorial Laplacian $\Delta_0$.
 
-- If $H^1 = 0$ the logic is consistent; a global section exists that fulfills all local truths.
+- If $H^1 = 0$ the logic is consistent; a global section $s$ exists such that $\delta_s = 0$, i.e., all local truths are fulfilled.
 - Otherwise, the cohomology is obstructed. A paradox such as the Kochen-Specker contradiction occurred, where local truths form a "Möbius strip" that cannot be flattened into a valid state.
 
 This prevents the construction of physically impossible circuits by raising a compilation error.
 
 #### 4. Circuit synthesis
 
-If the logic is valid, the geometer proceeds to minimize the **Dirichlet energy** of the graph. This finds the optimal path of unitary gates (basis rotations) required to transport the state between contexts with minimal information loss.
+If the logic is valid, the geometer proceeds to minimize the **Dirichlet energy** $\braket{s, \Delta s}$ of the graph and finally generates the morphism in the target category:
+
+$$
+\mathcal{F}(V \xrightarrow{i} U) = U_{gate}
+$$
+
+In other words, it solves for the optimal path of unitary gates (basis rotations) required to transport the state between contexts with minimal information loss.
