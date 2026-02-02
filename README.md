@@ -47,7 +47,7 @@ Data is not treated as fixed values, but as functions over the topology of conte
 - `System`: The topos defining the physical substrate (qudit).
 - `Context`: A commutative subalgebra of operators. This represents a classical snapshot where all observables commute and the logic stays Boolean.
 - `Observable<Context>`: A physical quantity (operator) definable within the specified context.
-- `State`: A global section of the spectral presheaf (the quantum state viewed from all possible angles).
+- `State`: A global section of the spectral presheaf (the quantum state seen from all possible angles).
 
 ### Logical
 
@@ -57,3 +57,30 @@ Instead of `bool`, we use the `Sieve` type. This reflects the switch from propos
 - `True`: The maximal sieve (identity): universally true in all contexts (e.g., global constants).
 - `False`: The minimal sieve (empty set): true in no context.
 - `Undefined`: Symbolizes a proposition that cannot be formulated in the current context (such as asking for the precise position value while observing momentum).
+
+## Compilation
+
+The C* compiler does not merely transliterate source code into gate sequences; it acts as a **homological geometer**. It views your program as a topology and solves for the global section that satisfies your constraints.
+
+### Steps
+
+#### 1. Graph wiring
+
+The compiler assembles the **cover's nerve**, a simplicial complex whose nodes are the `Context` instances and edges are their intersections.
+
+#### 2. Spectral analysis
+
+Next, the compiler populates this graph with local data (eigenvalues) to form the spectral presheaf.
+
+#### 3. Cohomology validation
+
+Before generating a single quantum gate, the compiler calculates the sheaf cohomology $H^1$ of your logic.
+
+- If $H^1 = 0$ the logic is consistent, meaning that a global section exists.
+- Otherwise, the cohomology is obstructed. A paradox such as the Kochen-Specker contradiction occurred.
+
+This way, the compiler throws an exception at build time, preventing the construction of physically impossible circuits.
+
+#### 4. Circuit synthesis
+
+If the logic is valid, the geometer proceeds to minimize the **Dirichlet energy** of the graph to find the optimal path of unitary gates (basis rotations) required to transport the state between contexts.
