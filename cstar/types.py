@@ -155,3 +155,13 @@ class System:
         if not ctx:
             raise ObstructionError("Cannot measure outside a Context.")
         return ctx.observables[0]
+
+    @property
+    def Min(self):
+        """The Minimal Truth for this system."""
+        return Sieve.Min(self.dim)
+
+    @property
+    def Max(self):
+        """The Maximal Truth for this system."""
+        return Sieve.Max(self.dim)
