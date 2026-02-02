@@ -5,7 +5,7 @@ import numpy as np
 _CONTEXT_STACK = []
 
 
-class ObstructionError(Exception):
+class ObstructionError(SyntaxError):
     """Raised when physical constraints (commutativity, cohomology) are violated."""
 
     pass
