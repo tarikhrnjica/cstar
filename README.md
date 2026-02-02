@@ -65,7 +65,7 @@ Instead of `bool`, we use the `Sieve` type. This reflects the switch from propos
 - `Sieve(Context)`: The core logical unit. A sieve is a topological set indicating *where* in the context graph (measurement setup) a specific statement holds.
 - `Sieve.Max`: The maximal sieve (identity), which is universally true in all contexts (e.g., global constants). Corresponds to `True`.
 - `Sieve.Min`: The minimal sieve (empty set), which is true in no context. Corresponds to `False`.
-- `Undefined`: Symbolizes a proposition that cannot be formulated in the current context (such as asking for the precise position value while observing momentum).
+- `Sieve.Undefined`: Symbolizes a proposition that cannot be formulated in the current context (such as asking for the precise position value while observing momentum).
 
 ## Casting
 
