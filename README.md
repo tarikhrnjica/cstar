@@ -4,7 +4,7 @@ This recreational and highly experimental project aims to construct a domain-agn
 
 ## Background
 
-The name C* (pronounced "C-Star") is both, a pun relating it to the family of C languages, as well as an explicit nod to the C*-algebras that power it mathematically.
+The name C* (pronounced "C-Star") is both, a lighthearted pun relating it to the lineage of C languages, as well as an explicit nod to the C*-algebras that power it mathematically.
 
 ## Introduction
 
