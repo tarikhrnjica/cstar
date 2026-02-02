@@ -107,3 +107,18 @@ $$
 $$
 
 In other words, it solves for the optimal path of unitary gates (basis rotations) required to transport the state between contexts with minimal information loss.
+
+### Quantum Error Correction
+
+The mechanism C* uses to verify logic (cohomology check) is isomorphic to the toric or surface code that hardware uses to correct errors.
+
+
+|C* Compiler (Software)|Surface Code (Hardware)|Homological Connection                 |
+|----------------------|-----------------------|---------------------------------------|
+|Logic graph           |Qubit lattice          |Manifold or simplicial complex         |
+|Inconsistency         |Bit-flip error         |Chain $C_1$                            |
+|Validation check      |Stabilizer measurement |Boundary operator ($\partial / \delta$)|
+|Constraint violation  |Syndrome (anyon)       |Boundary and coboundary                |
+|Logical paradox       |Logical error          |Nontrivial homology cycle              |
+
+In a surface code, the decoder identifies syndromes (topological defects) and attempts to pair them off to restore the vacuum state. C* generalizes this: it treats logical inconsistencies in your source code as *semantic syndromes*. The compiler behaves as a high-level QEC decoder, making sure that the topology of your *concepts* is free of obstructions before the program ever touches the physical qubits.
