@@ -10,6 +10,8 @@ The name C* (pronounced "C-Star") is both, a lighthearted pun relating it to the
 
 As quantum computers scale, it becomes convenient to transition from an imperative ("do this") approach to a more declarative ("make this true") paradigm. Rather than scheduling quantum gates manually, similar to writing Assembly, we wish to rely on a compiler to "glue" together our desired truths into a valid (globally consistent) quantum circuit. This shift in perspective turns an instruction like *"Apply Hadamard to the given qubit"* into the request *"Ensure my system is entangled in a Bell state"*.
 
+## Advantages
+
 Compared to traditional circuit-centric languages, C* offers several distinct advantages:
 
 - **Atomic Abstraction:** Shifting the fundamental unit from qubits to contexts prevents low-level indexing errors and enforces physical semantics.
