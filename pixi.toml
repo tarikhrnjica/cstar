@@ -1,0 +1,10 @@
+[workspace]
+authors = ["Tarik Hrnjica <tarik.hrnjica@gmail.com>"]
+channels = ["conda-forge"]
+name = "c-star"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
