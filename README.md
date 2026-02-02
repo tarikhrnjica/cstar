@@ -122,3 +122,14 @@ The mechanism C* uses to verify logic (cohomology check) is isomorphic to the **
 |Logical paradox       |Logical error          |Nontrivial homology cycle              |
 
 In a surface code, the decoder identifies syndromes (topological defects) and attempts to pair them off to restore the vacuum state. C* generalizes this by considering logical inconsistencies in your source code as **semantic syndromes**. The compiler essentially behaves like a high-level QEC decoder, making sure that the topology of your *concepts* is free of obstructions before the program ever touches the physical qubits.
+
+### Self-Hosting
+
+For small systems, the cohomology checks can run on a classical CPU. However, the number of possible contexts grows exponentially in the number of qubits, rendering classical verification intractable.
+
+Hence C* is designed to be bootstrapped on a QPU to compile its own logic:
+
+1. Step 3 requires inverting the Laplacian matrix. While classically this is $O(N^3)$, the **Harrow–Hassidim–Lloyd (HHL) algorithm** can perform this in $O(\log N)$ time.
+2. Step 2 depends on diagonalization. The **quantum phase estimation (QPE) algorithm** replaces classical eigendecomposition, collapsing wavefunctions into their spectral components natively.
+
+This creates a recursive hierarchy where the quantum state *is* the logic graph, "cooled" to its ground state (consistent logic) via quantum annealing or variational circuits.
