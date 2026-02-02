@@ -2,6 +2,16 @@
 
 This recreational and highly experimental project aims to construct a domain-agnostic, logic-centric programming language for quantum computers. Built as a Python embedded DSL, it explores how standard circuit manipulation can be replaced by the **Grothendieck-Isham topos** framework.
 
+**Contents**
+
+- [Background](#background)
+- [Introduction](#introduction)
+- [Advantages](#advantages)
+- [Syntax](#syntax)
+- [Types](#types)
+- [Casting](#casting)
+- [Compilation](#compilation)
+
 ## Background
 
 The name C* (pronounced "C-Star") is both, a lighthearted pun relating it to the lineage of C languages, as well as an explicit nod to the C*-algebras that power it mathematically.
