@@ -60,14 +60,14 @@ Instead of `bool`, we use the `Sieve` type. This reflects the switch from propos
 
 ## Casting
 
-An important feature of C* is **daseinisation** (German for "being there"), which handles type casting between incompatible quantum contexts.
+An important feature of C* is **daseinisation**, which handles type casting between incompatible quantum contexts.
 
-When a variable defined in context $U$ (e.g., position) is accessed in context $V$ (e.g., momentum), standard physics says the value is undefined. In C*, the compiler performs **spectral projection** to approximate the truth.
+This mechanism leverages the partial ordering of contexts ($V \subseteq U$). When a variable defined in context $U$ (e.g., position) is accessed in context $V$ (e.g., momentum), standard physics says the value is undefined. In C*, the compiler traverses the context lattice to conduct **spectral projection**:
 
-- **Outer daseinisation** ($\delta^0$): Approximates the proposition from the outside. It poses the question: "What is the smallest property in context $V$ that is consistent with the truth in context $U$?" This often results in a "fuzzy" or coarse-grained sieve.
-- **Inner daseinisation** ($\delta^i$): Approximates the proposition from the inside. It poses the question: "What property in context $V$ is guaranteed by context $U$?".
+- **Outer daseinisation** ($\delta^0$): Approximates the proposition from **above** in the lattice. It poses the question: "What is the smallest property in context $V$ that is consistent with (fully encloses) the truth in context $U$?" This often results in a "fuzzy" or coarse-grained sieve.
+- **Inner daseinisation** ($\delta^i$): Approximates the proposition from **below** in the lattice. It poses the question: "What property in context $V$ is guaranteed by (fully contained in) context $U$?".
 
-This allows the program to deal with Heisenberg uncertainty not as a runtime error, but as a logical constraint during compile-time.
+This allows the program to deal with Heisenberg uncertainty not as a runtime error, but as a logical constraint (lattice approximation) during compile-time.
 
 ## Compilation
 
