@@ -44,9 +44,9 @@ with ctx_z:
 # 4. Change the context (daseinisation)
 # "Transport this truth to a new context"
 with ctx_x:
-    # The compiler automatically projects 'spin_up' to the X-basis
-    # resulting in a "Sieve" (a partial truth). The tilde denotes taking
-    # the adjoint
+    # The compiler automatically projects 'spin_up' to the
+    # X-basis resulting in a "Sieve" (a partial truth).
+    # The tilde denotes taking the adjoint
     uncertain_truth = ~spin_up
 ```
 
