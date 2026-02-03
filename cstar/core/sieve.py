@@ -17,7 +17,6 @@ class Sieve:
         Represents a logical category error.
         Example: Asking for Position inside a Momentum context.
         """
-        # We use a zero matrix as placeholder, but the flag is what matters.
         return cls(np.zeros((dim, dim)), context, is_undefined=True)
 
     @classmethod
@@ -32,36 +31,31 @@ class Sieve:
 
     def __repr__(self):
         if self._is_undefined:
-            return "<Sieve: Undefined (Context Mismatch)>"
+            return "<Sieve: Undefined>"
 
         dim_trace = np.trace(self.projector).real
-        # Check for Max/Min constants for cleaner printing
         dims = self.projector.shape[0]
         if np.isclose(dim_trace, dims):
-            return "<Sieve: True (Max)>"
+            return "<Sieve: Max>"
         if np.isclose(dim_trace, 0):
-            return "<Sieve: False (Min)>"
+            return "<Sieve: Min>"
 
         return f"<Sieve: dim={dim_trace:.1f} in {self.context.name}>"
 
-    # --- Three-Valued Logic (Propagating Undefined) ---
-
     def __invert__(self):
         if self._is_undefined:
-            return self  # ~Undefined is still Undefined
+            return self
 
         id = np.eye(self.projector.shape[0])
         return Sieve(id - self.projector, self.context)
 
     def __and__(self, other: "Sieve"):
-        # Poison logic: If any part is undefined, the intersection is undefined.
         if self._is_undefined or other._is_undefined:
             return Sieve.Undefined(self.projector.shape[0], self.context)
 
         return Sieve(self.projector @ other.projector, self.context)
 
     def __or__(self, other: "Sieve"):
-        # Poison logic: Undefined | True is typically Undefined in strict verification
         if self._is_undefined or other._is_undefined:
             return Sieve.Undefined(self.projector.shape[0], self.context)
 
