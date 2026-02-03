@@ -16,7 +16,7 @@
 from contextvars import ContextVar
 from typing import List, Optional
 
-from cstar.core import Context
+from .core import Context
 
 _CONTEXT_STACK: ContextVar[List["Context"]] = ContextVar(
     "active_context_stack", default=[]
