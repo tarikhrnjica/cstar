@@ -45,9 +45,9 @@ with ctx_z:
 # "Transport this truth to a new context"
 with ctx_x:
     # The compiler automatically projects 'spin_up' to the
-    # X-basis resulting in a "Sieve" (a partial truth).
+    # X-basis resulting in a "Sieve" (a partial or uncertain truth).
     # The tilde denotes taking the adjoint
-    uncertain_truth = ~spin_up
+    maybe_up = ~spin_up
 ```
 
 Instead of manually applying a Hadamard gate to create superposition, the developer simply asserts a truth ("spin is up") in the Z-context and then frames that same truth from within the X-context. The compiler automatically invokes the spectral theorem, degrading the sharp truth of the Z-basis into a probabilistic sieve (superposition) in the X-basis.
