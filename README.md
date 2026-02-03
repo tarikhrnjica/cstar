@@ -134,7 +134,7 @@ In other words, it solves for the optimal path of unitary gates (basis rotations
 
 By simply modifying the metric induced by the Laplacian $\Delta$ used during step 4, C* can output optimal gate sequences for radically different architectures without altering the source code.
 
-- **Transmon:** The Laplacian is weighted to penalize geometric distance on the superconducting chip lattice. The compiler seeks to avoid "stretching", effectively reducing the number of `swap` gates that destroy coherence.
+- **Transmon:** The Laplacian is weighted to penalize geometric distance on the superconducting chip lattice. The compiler tries to avoid "stretching", effectively reducing the number of `swap` gates that might destroy coherence.
 - **Ion trap:** Here, the Laplacian is weighted to maximize the dimension of simplicial faces. This encourages the compiler to use native Mølmer-Sørensen gates (entangling $n$ ions at once) rather than splitting logic into pairwise CNOTs, reducing phonon mode crowding that would heat up the trap.
 - **Neutral atom:** The compiler resolves the optimal graph embedding coordinates. Instead of routing signals, it focuses on minimizing the kinetic energy of the optical tweezers, hence rearranging the atoms to match the logic graph.
 
