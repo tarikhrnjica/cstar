@@ -22,3 +22,7 @@ UserInterfaceState.xcuserstate
 !.vscode/tasks.json
 .history/
 *.vsix
+
+# Copilot
+.github/copilot-instructions.md
+
