@@ -1,2 +1,11 @@
-# SCM syntax highlighting & preventing 3-way merges
-pixi.lock merge=binary linguist-language=YAML linguist-generated=true -diff
+*          text=auto
+*.bat      text eol=crlf
+*.json     text
+*.md       text diff=markdown
+*.py       text eol=lf diff=python
+*.sh       text eol=lf
+*.toml     text
+*.yaml     text
+*.yml      text
+LICENSE    text
+pixi.lock  merge=binary linguist-language=YAML linguist-generated=true -diff
