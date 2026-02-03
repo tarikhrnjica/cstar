@@ -31,9 +31,9 @@ Conceptually, C* abstracts away the Hilbert space. Developers declare logical tr
 qubits = System(n=2)
 
 # 2. Define context windows
-# "I speak the language of Z-axis spin"
+# "I speak the language of z-axis spin"
 ctx_z = Context("Z", [PauliZ])
-# "I speak the language of Z-axis spin"
+# "I speak the language of x-axis spin"
 ctx_x = Context("X", [PauliX])
 
 # 3. Specify the logic
