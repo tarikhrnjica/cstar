@@ -17,8 +17,9 @@ from typing import List
 
 import numpy as np
 
-from cstar import _CONTEXT_STACK, ObstructionError
-from cstar.core import Observable
+from ..exceptions import ObstructionError
+from ..state import _CONTEXT_STACK
+from .observable import Observable
 
 
 class Context:

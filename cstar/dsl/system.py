@@ -13,8 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from cstar import ObstructionError, _get_current_context
-from cstar.core import Observable, Sieve
+
+from ..core import Observable, Sieve
+from ..exceptions import ObstructionError
+from ..state import get_current_context
 
 
 class System:
@@ -26,7 +28,7 @@ class System:
         Returns a placeholder observable representing the
         active measurement in the current context.
         """
-        ctx = _get_current_context()
+        ctx = get_current_context()
         if not ctx:
             raise ObstructionError("Cannot measure outside a Context.")
         return ctx.observables[0]

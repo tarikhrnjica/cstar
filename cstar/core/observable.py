@@ -15,8 +15,9 @@
 #
 import numpy as np
 
-from cstar import ObstructionError, _get_current_context
-from cstar.core import Sieve
+from ..exceptions import ObstructionError
+from ..state import get_current_context
+from .sieve import Sieve
 
 
 class Observable:
@@ -36,7 +37,7 @@ class Observable:
         return f"<Observable: {self.name}>"
 
     def __eq__(self, eigenvalue: float) -> "Sieve":
-        current_ctx = _get_current_context()
+        current_ctx = get_current_context()
 
         # 1. Check Context Availability
         # If we are in a context, and this observable is NOT in it:

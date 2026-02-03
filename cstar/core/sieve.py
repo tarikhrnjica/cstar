@@ -15,7 +15,7 @@
 #
 import numpy as np
 
-from cstar.core import Context
+from .context import Context
 
 
 class Sieve:
