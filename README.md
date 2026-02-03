@@ -14,11 +14,11 @@ As quantum computers scale, it becomes convenient to transition from an imperati
 
 Compared to traditional circuit-centric languages, C* offers several distinct advantages:
 
-- **Hardware Independence:** Specialized compilers can optimize logic for different hardware implementations or even native topological braids without any code changes.
-- **Atomic Abstraction:** Shifting the fundamental unit from qubits to contexts prevents low-level indexing errors and enforces physical semantics.
-- **Compile-Time Safety:** Impossible states are caught as syntax errors, rather than failing silently as runtime noise.
-- **Native Quantum Logic:** Uncertainty and contextuality move from post-processing statistics directly into the underlying logic.
-- **Semantic Error Correction:** Logical inconsistencies are resolved in the design before generating the physical circuit.
+- **Hardware independence:** Specialized compilers can optimize logic for different hardware implementations or even native topological braids without any code changes.
+- **Atomic abstraction:** Shifting the fundamental unit from qubits to contexts prevents low-level indexing errors and enforces physical semantics.
+- **Compile-time safety:** Impossible states are caught as syntax errors, rather than failing silently as runtime noise.
+- **Native quantum logic:** Uncertainty and contextuality move from post-processing statistics directly into the underlying logic.
+- **Semantic error correction:** Logical inconsistencies are resolved in the design before generating the physical circuit.
 
 ## Syntax
 
@@ -118,15 +118,15 @@ $$
 
 In other words, it solves for the optimal path of unitary gates (basis rotations) required to transport the state between contexts with minimal information loss.
 
-### Multi-platform Support
+### Multi-Platform Support
 
 By simply modifying the metric induced by the Laplacian $\Delta$ used during step 4, C* can output optimal gate sequences for radically different architectures without altering the source code.
 
 - **Transmon:** The Laplacian is weighted to penalize geometric distance on the superconducting chip lattice. The compiler minimizes "stretching", effectively reducing the number of `swap` gates that destroy coherence.
-- **Ion Trap:** The Laplacian is weighted to maximize the dimension of simplicial faces. This encourages the compiler to use native Mølmer-Sørensen (MS) gates (entangling $n$ ions at once) rather than breaking logic into pairwise CNOTs, reducing phonon mode crowding that would heat up the trap.
-- **Neutral Atom:** The compiler resolves the optimal graph embedding coordinates. Instead of routing signals, it minimizes the kinetic energy of the optical tweezers, hence rearranging the atoms to match the logic graph.
+- **Ion trap:** The Laplacian is weighted to maximize the dimension of simplicial faces. This encourages the compiler to use native Mølmer-Sørensen (MS) gates (entangling $n$ ions at once) rather than breaking logic into pairwise CNOTs, reducing phonon mode crowding that would heat up the trap.
+- **Neutral atom:** The compiler resolves the optimal graph embedding coordinates. Instead of routing signals, it minimizes the kinetic energy of the optical tweezers, hence rearranging the atoms to match the logic graph.
 
-Furthermore, when targeting topological quantum computers (e.g., Majorana fermions), the compiler replaces the backend functor entirely. While the previously described functor $\mathcal{F}$ uses sheaf cohomology as the invariant and outputs unitary gates, the topological analogue
+Furthermore, when targeting **topological quantum computers** (e.g., Majorana fermions), the compiler replaces the backend functor entirely. While the previously described functor $\mathcal{F}$ uses sheaf cohomology as the invariant and outputs unitary gates, the topological analogue
 
 $$
 \mathcal{G}: \mathcal{V}(\mathcal{H}) \to \mathrm{Cob}
