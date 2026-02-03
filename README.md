@@ -2,7 +2,7 @@
 
 > ⚠️ **Work in Progress:** The following document is a draft and subject to frequent change.
 
-This recreational and *highly* 😅 experimental project aims to construct a domain- and hardware-agnostic, logic-centric programming language for quantum computers. Built as a Python embedded DSL, it explores how standard circuit manipulation can be replaced by the **Grothendieck-Isham topos** framework.
+This recreational and *highly* 😅 experimental project aims to construct a domain- and hardware-agnostic, logic-centric programming language for quantum computers. Built as a Python embedded DSL, it explores how low-level circuit manipulation can be replaced by the **Grothendieck-Isham topos** framework.
 
 ## Background
 
@@ -47,7 +47,7 @@ with ctx_x:
     # The compiler automatically projects 'spin_up' to the
     # X-basis resulting in a "Sieve" (a partial or uncertain truth).
     # The tilde denotes taking the adjoint
-    maybe_up = ~spin_up
+    maybe_spin_up = ~spin_up
 ```
 
 Instead of manually applying a Hadamard gate to create superposition, the developer simply asserts a truth ("spin is up") in the Z-context and then frames that same truth from within the X-context. The compiler automatically invokes the spectral theorem, degrading the sharp truth of the Z-basis into a probabilistic sieve in the X-basis.
@@ -78,7 +78,7 @@ Instead of `bool`, we use the `Sieve` type. This reflects the switch from propos
 
 ## Casting
 
-An important feature of C* is **daseinisation**, which handles type casting between incompatible quantum contexts.
+An important feature of C* is **daseinisation**, which seamlessly handles type casting between incompatible quantum contexts.
 
 This mechanism leverages the partial ordering of contexts ($V \subseteq U$). When a variable defined in context $U$ (e.g., position) is accessed in context $V$ (e.g., momentum), standard physics says the value is undefined. In C*, the compiler traverses the context lattice to conduct **spectral projection**:
 
