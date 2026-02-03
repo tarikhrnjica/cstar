@@ -36,7 +36,7 @@ with ctx_z:
     # This is a local section of the presheaf
     spin_up = (qubits.measure() == +1)
 
-# 4. Switch the context (Daseinisation)
+# 4. Change the context (daseinisation)
 # "Transport this truth to a new context"
 with Context("X", [PauliX]):
     # The compiler automatically projects 'spin_up' to the X-basis
@@ -51,11 +51,11 @@ The type system mirrors the **Bohr topos** of Isham-Döring.
 
 ### Primitives
 
-Data is not treated as fixed values, but as contextual fields &mdash; mappings defined over the topology of contexts.
+Data is not treated as fixed values, but as contextual fields: mappings defined over the topology of contexts.
 
 - `System`: The topos defining the physical substrate (qudit).
 - `Context`: A commutative subalgebra of operators. This represents a classical snapshot where all observables commute and the logic stays Boolean.
-- `Observable<Context>`: A physical quantity (operator) definable within the specified context.
+- `Observable<Context>`: A physical quantity (Hermitian operator) definable within the specified context.
 - `State`: A global section of the spectral presheaf (the quantum state seen from all possible angles).
 
 ### Logical
@@ -130,15 +130,16 @@ The mechanism C* uses to verify logic (cohomology check) is isomorphic to the **
 |Constraint violation  |Syndrome (anyon)       |Boundary and coboundary                |
 |Logical paradox       |Logical error          |Nontrivial homology cycle              |
 
-In a surface code, the decoder identifies syndromes (topological defects) and attempts to pair them off to restore the vacuum state. C* generalizes this by considering logical inconsistencies in your source code as **semantic syndromes**. The compiler essentially behaves like a high-level QEC decoder, making sure that the topology of your *concepts* is free of obstructions before the program ever touches the physical qubits.
+In a surface code, the decoder identifies syndromes (topological defects) and attempts to pair them off to restore the vacuum state. C* generalizes this by considering logical inconsistencies in your source code as **semantic syndromes**. The compiler essentially behaves like a high-level QEC decoder, making sure that the topology of your *concepts* is free of obstructions before the program ever touches the actual qubits.
 
 ### Self-Hosting
 
-For small systems, the cohomology checks can run on a classical CPU. However, the number of possible contexts grows exponentially in the number of qubits, rendering classical verification intractable.
+For small systems, the cohomology checks can run on a classical CPU. However, the dimension of the Hilbert space grows exponentially, rendering classical verification of large systems intractable.
 
 Fortunately, C* can (at least in theory) be bootstrapped on a QPU to efficiently compile its own logic:
 
-1. Step 3 requires inverting the Laplacian matrix. While classically this is $O(N^3)$, the **Harrow–Hassidim–Lloyd (HHL) algorithm** can perform this in $O(\log N)$ time.
-2. Step 2 depends on diagonalization. The **quantum phase estimation (QPE) algorithm** replaces classical eigendecomposition, collapsing wavefunctions into their spectral components natively.
+1. Step 3 requires inverting the Laplacian matrix. While classically this runs at cubic complexity, the **Harrow–Hassidim–Lloyd (HHL) algorithm** can perform this in logarithmic time.
+2. Step 2 needs to diagonalize the observables that define each context. The **quantum phase estimation (QPE) algorithm** replaces classical eigendecomposition, collapsing wavefunctions into their spectral components natively.
 
 This creates a recursive hierarchy where the quantum state *is* the logic graph, "cooled" to its ground state (consistent logic) via quantum annealing or variational circuits.
+
