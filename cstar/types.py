@@ -1,8 +1,11 @@
+from contextvars import ContextVar
 from typing import List, Optional
 
 import numpy as np
 
-_CONTEXT_STACK = []
+_ACTIVE_CONTEXT_STACK: ContextVar[List["Context"]] = ContextVar(
+    "active_context_stack", default=[]
+)
 
 
 class ObstructionError(SyntaxError):
@@ -82,15 +85,38 @@ class Context:
         return f"<Context: {self.name}>"
 
     def __enter__(self):
-        _CONTEXT_STACK.append(self)
+        # 1. Get the current stack for this thread
+        stack = _ACTIVE_CONTEXT_STACK.get()
+
+        # 2. Vital: If this is the first context in this thread,
+        # 'default=[]' shares the SAME list object across threads if we aren't careful.
+        # We must ensure we have a unique list for this context execution.
+        if stack == []:
+            # If it's the default empty list, make a new one so we don't mutate the default
+            stack = []
+
+        # 3. Push self
+        stack.append(self)
+
+        # 4. Update the context var (mostly for safety if we replaced the list object)
+        self._token = _ACTIVE_CONTEXT_STACK.set(stack)
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        _CONTEXT_STACK.pop()
+        # 1. Get current stack
+        stack = _ACTIVE_CONTEXT_STACK.get()
+
+        # 2. Pop self
+        stack.pop()
+
+        # 3. No need to reset token if we mutated the list in place,
+        # but resetting is cleaner if we want strictly scoped behavior.
+        # Ideally, we just leave the list mutated.
 
 
 def _get_current_context() -> Optional[Context]:
-    return _CONTEXT_STACK[-1] if _CONTEXT_STACK else None
+    stack = _ACTIVE_CONTEXT_STACK.get()
+    return stack[-1] if stack else None
 
 
 class Sieve:
