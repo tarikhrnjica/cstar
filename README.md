@@ -14,7 +14,7 @@ As quantum computers scale, it becomes convenient to transition from an imperati
 
 ## Advantages
 
-Compared to traditional circuit-centric languages, C* offers several distinct advantages:
+Compared to traditional circuit-centric languages, C* offers several distinct benefits:
 
 - **Hardware independence:** Specialized compilers can optimize logic for different hardware implementations or even native topological braiding and fusion operations without any code changes.
 - **Atomic abstraction:** Shifting the fundamental unit from qubits to contexts prevents low-level indexing errors and enforces physical semantics.
@@ -65,7 +65,7 @@ Data is not treated as fixed values, but as contextual fields: mappings defined 
 
 Instead of `bool`, we use the `Sieve` type. This reflects the switch from propositional logic in a Boolean algebra to intuitionistic logic in a Heyting algebra.
 
-- `Sieve(Context)`: The core logical unit. A sieve is a topological set indicating *where* in the context graph (measurement setup) a specific statement holds.
+- `Sieve(Context)`: The core unit of logic. A sieve is a topological set indicating *where* in the context graph (measurement setup) a specific statement holds.
 - `Sieve.Max`: The maximal sieve (identity), which is universally true in all contexts (e.g., global constants). Corresponds to `True`.
 - `Sieve.Min`: The minimal sieve (empty set), which is true in no context. Corresponds to `False`.
 - `Sieve.Undefined`: Symbolizes a proposition that cannot be formulated in the current context (such as asking for the precise position value while observing momentum).
