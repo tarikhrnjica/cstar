@@ -1,6 +1,6 @@
 # C* Language
 
-This recreational and highly experimental project aims to construct a domain-agnostic, logic-centric programming language for quantum computers. Built as a Python embedded DSL, it explores how standard circuit manipulation can be replaced by the **Grothendieck-Isham topos** framework.
+This recreational and highly experimental project aims to construct a domain- and hardware-agnostic, logic-centric programming language for quantum computers. Built as a Python embedded DSL, it explores how standard circuit manipulation can be replaced by the **Grothendieck-Isham topos** framework.
 
 ## Background
 
