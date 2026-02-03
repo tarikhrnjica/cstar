@@ -74,6 +74,8 @@ Instead of `bool`, we use the `Sieve` type. This reflects the switch from propos
 - `Sieve.Min`: The minimal sieve (empty set), which is true in no context. Corresponds to `False`.
 - `Sieve.Undefined`: Symbolizes a proposition that cannot be formulated in the current context (such as asking for the precise position value while observing momentum).
 
+> **Note:** Unlike Birkhoff-von Neumann logic, which is based on nondistributive orthomodular lattices, C* maintains distributivity at the expense of the law of the excluded middle.
+
 ## Casting
 
 An important feature of C* is **daseinisation**, which handles type casting between incompatible quantum contexts.
@@ -100,6 +102,8 @@ The compiler starts by assembling the **cover's nerve**, a simplicial complex wh
 - **Nodes** are the `Context` instances that appear in your code.
 - **Edges** correspond to the intersections of contexts (shared observables).
 - **Faces** represent triple intersections.
+
+Think of this as the compiler sketching out a map of how your different contexts overlap.
 
 #### 2. Spectral analysis
 
