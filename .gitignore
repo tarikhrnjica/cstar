@@ -13,6 +13,11 @@ UserInterfaceState.xcuserstate
 .pixi/*
 !.pixi/config.toml
 
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
 # Visual Studio Code
 .vscode/*
 !.vscode/*.code-snippets
