@@ -110,7 +110,7 @@ Next, the compiler populates this graph with local data. For every context node 
 Before generating a quantum gate, the compiler calculates the **sheaf cohomology group** $H^1(\mathcal{N}(\mathcal{U}), \underline{\Sigma})$ of your logic using the combinatorial Laplacian $\Delta_0$.
 
 - If $H^1 = 0$ the logic is consistent; a global section $s$ exists such that $\delta_s = 0$, i.e., all local truths are fulfilled.
-- Otherwise, the cohomology is obstructed. A paradox such as the Kochen-Specker contradiction occurred, where local truths form a "Möbius strip" that cannot be flattened into a valid state.
+- Otherwise, the cohomology is obstructed. A paradox such as the Kochen-Specker contradiction occurred, where local truths form a nonorientable "Möbius strip" that cannot be flattened into a valid state.
 
 This prevents the construction of physically impossible circuits by raising a compilation error.
 
