@@ -1,6 +1,9 @@
 {
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "EditorConfig.EditorConfig",
+  "files.associations": {
+    "HEADER": "plaintext"
+  },
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.codeActionsOnSave": {
