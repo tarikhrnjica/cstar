@@ -62,7 +62,7 @@ Data is not treated as fixed values, but as contextual fields: mappings defined 
 
 - `System`: The topos defining the physical substrate (qudit).
 - `Context`: A commutative subalgebra of operators. This represents a classical snapshot where all observables commute and the logic stays Boolean.
-- `Observable<Context>`: A physical quantity (Hermitian operator) definable within the specified context.
+- `Observable(Context)`: A physical quantity (Hermitian operator) definable within the specified context.
 - `State`: A global section of the spectral presheaf (the quantum state seen from all possible angles).
 
 ### Logical
