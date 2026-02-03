@@ -14,3 +14,15 @@ class ObstructionError(CStarError):
     """
 
     pass
+
+
+class CohomologyError(CStarError):
+    """
+    Raised when the global topology prevents circuit generation.
+    Analogue: LinkerError, RecursionError
+
+    Example:
+        The logic contains a paradox.
+    """
+
+    pass
