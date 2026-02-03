@@ -2,7 +2,7 @@
 
 > ⚠️ **Work in Progress:** The following document is a draft and subject to frequent change.
 
-This recreational and *highly* 😅 experimental project aims to construct a domain- and hardware-agnostic, logic-centric programming language for quantum computers. Built as a Python embedded DSL, it explores how low-level circuit manipulation can be replaced by the **Grothendieck-Isham topos** framework.
+This recreational project aims to construct a domain- and hardware-agnostic, logic-centric programming language for quantum computers. Built as a Python embedded DSL, it explores how low-level circuit manipulation can be replaced by the **Grothendieck-Isham topos** framework.
 
 ## Background
 
@@ -134,9 +134,9 @@ In other words, it solves for the optimal path of unitary gates (basis rotations
 
 By simply modifying the metric induced by the Laplacian $\Delta$ used during step 4, C* can output optimal gate sequences for radically different architectures without altering the source code.
 
-- **Transmon:** The Laplacian is weighted to penalize geometric distance on the superconducting chip lattice. The compiler minimizes "stretching", effectively reducing the number of `swap` gates that destroy coherence.
+- **Transmon:** The Laplacian is weighted to penalize geometric distance on the superconducting chip lattice. The compiler seeks to avoid "stretching", effectively reducing the number of `swap` gates that destroy coherence.
 - **Ion trap:** Here, the Laplacian is weighted to maximize the dimension of simplicial faces. This encourages the compiler to use native Mølmer-Sørensen gates (entangling $n$ ions at once) rather than splitting logic into pairwise CNOTs, reducing phonon mode crowding that would heat up the trap.
-- **Neutral atom:** The compiler resolves the optimal graph embedding coordinates. Instead of routing signals, it minimizes the kinetic energy of the optical tweezers, hence rearranging the atoms to match the logic graph.
+- **Neutral atom:** The compiler resolves the optimal graph embedding coordinates. Instead of routing signals, it focuses on minimizing the kinetic energy of the optical tweezers, hence rearranging the atoms to match the logic graph.
 
 Furthermore, when targeting **topological quantum computers** (e.g., Majorana fermions), the compiler replaces the backend functor entirely. While the previously described functor $\mathcal{F}$ uses sheaf cohomology as the invariant and outputs unitary gates, the topological analogue
 
@@ -174,4 +174,4 @@ This creates a recursive hierarchy where the quantum state *is* the logic graph,
 
 ## Disclaimer
 
-C* is a personal exploration of quantum topology that I pursue in my spare time. It is not associated with my professional affiliation.
+C* is a personal experiment with quantum topology that I pursue in my spare time. It is not associated with my professional affiliation.
