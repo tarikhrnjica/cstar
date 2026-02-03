@@ -17,7 +17,7 @@ from typing import List
 
 import numpy as np
 
-from cstar import _ACTIVE_CONTEXT_STACK, ObstructionError
+from cstar import _CONTEXT_STACK, ObstructionError
 from cstar.core import Observable
 
 
@@ -51,7 +51,7 @@ class Context:
 
     def __enter__(self):
         # 1. Get the current stack for this thread
-        stack = _ACTIVE_CONTEXT_STACK.get()
+        stack = _CONTEXT_STACK.get()
 
         # 2. Vital: If this is the first context in this thread,
         # 'default=[]' shares the SAME list object across threads if we aren't careful.
@@ -64,12 +64,12 @@ class Context:
         stack.append(self)
 
         # 4. Update the context var (mostly for safety if we replaced the list object)
-        self._token = _ACTIVE_CONTEXT_STACK.set(stack)
+        self._token = _CONTEXT_STACK.set(stack)
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         # 1. Get current stack
-        stack = _ACTIVE_CONTEXT_STACK.get()
+        stack = _CONTEXT_STACK.get()
 
         # 2. Pop self
         stack.pop()
