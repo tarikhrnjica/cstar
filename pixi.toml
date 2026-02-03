@@ -12,3 +12,6 @@ ruff = ">=0.14.14,<0.15"
 
 [pypi-dependencies]
 numpy = ">=2.4.2, <3"
+
+[feature.dev.pypi-dependencies]
+licenseheaders = "*"
