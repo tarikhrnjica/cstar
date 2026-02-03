@@ -31,9 +31,9 @@ Conceptually, C* abstracts away the Hilbert space. Developers declare logical tr
 qubits = System(n=2)
 
 # 2. Define context windows
-# "I speak the language of z-axis spin"
+# "I speak the language of Z-axis spin"
 ctx_z = Context("Z", [PauliZ])
-# "I speak the language of x-axis spin"
+# "I speak the language of X-axis spin"
 ctx_x = Context("X", [PauliX])
 
 # 3. Specify the logic
@@ -49,6 +49,8 @@ with ctx_x:
     # the adjoint
     uncertain_truth = ~spin_up
 ```
+
+Instead of manually applying a Hadamard gate to create superposition, the developer simply asserts a truth ("spin is up") in the Z-context and then frames that same truth from within the X-context. The compiler automatically invokes the spectral theorem, degrading the sharp truth of the Z-basis into a probabilistic sieve (superposition) in the X-basis.
 
 ## Types
 
