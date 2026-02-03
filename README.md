@@ -17,7 +17,7 @@ As quantum computers scale, it becomes convenient to transition from an imperati
 Compared to traditional circuit-centric languages, C* offers several distinct benefits:
 
 - **Hardware independence:** Specialized compilers can optimize logic for different hardware implementations or even native topological braiding and fusion operations without any code changes.
-- **Atomic abstraction:** Shifting the fundamental unit from qubits to contex-based addressing eliminates common indexing errors (mistaking `q[i]` for `q[j]`) and enforces physical semantics.
+- **Atomic abstraction:** Shifting the fundamental unit from qubits to context-based addressing eliminates common indexing errors and enforces physical semantics.
 - **Compile-time safety:** Impossible states are caught as syntax errors, rather than failing silently as runtime noise.
 - **Native quantum logic:** Uncertainty and contextuality move from post-processing statistics directly into the underlying logic.
 - **Semantic error correction:** Logical inconsistencies are resolved in the design before generating the physical circuit.
