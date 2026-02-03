@@ -32,7 +32,9 @@ qubits = System(n=2)
 
 # 2. Define context windows
 # "I speak the language of Z-axis spin"
-ctx_z = Context("Z", [PauliZ]) 
+ctx_z = Context("Z", [PauliZ])
+# "I speak the language of Z-axis spin"
+ctx_x = Context("X", [PauliX])
 
 # 3. Specify the logic
 with ctx_z:
@@ -41,7 +43,7 @@ with ctx_z:
 
 # 4. Change the context (daseinisation)
 # "Transport this truth to a new context"
-with Context("X", [PauliX]):
+with ctx_x:
     # The compiler automatically projects 'spin_up' to the X-basis
     # resulting in a "Sieve" (a partial truth). The tilde denotes taking
     # the adjoint
