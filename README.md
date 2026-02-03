@@ -114,6 +114,8 @@ Before generating a quantum gate, the compiler calculates the **sheaf cohomology
 
 This prevents the construction of physically impossible circuits by raising a compilation error.
 
+> **Note:** The compiler tests whether a *wavefunction* exists, not if a *hidden variable* exists. A state like GHZ is contextual (classically impossible), but algebraically sound (quantumly possible). C* permits this topological twist (the source of quantum supremacy) and only throws an error for breaks, where constraints yield a genuine algebraic contradiction (like the Mermin paradox).
+
 #### 4. Circuit synthesis
 
 If the logic is valid, the geometer proceeds to minimize the **Dirichlet energy** $\braket{s, \Delta s}$ of the graph and finally generates the morphism in the target category:
