@@ -167,3 +167,7 @@ Fortunately, C* can be bootstrapped on a QPU to efficiently compile its own logi
 2. Step 2 needs to diagonalize the observables that define each context. The **quantum phase estimation (QPE) algorithm** replaces classical eigendecomposition, collapsing wavefunctions into their spectral components natively.
 
 This creates a recursive hierarchy where the quantum state *is* the logic graph, "cooled" to its ground state (consistent logic) via quantum annealing or variational circuits. While the space complexity of the check roughly equals that of the logic itself, the time complexity (depth) scales polylogarithmically, breaking the classical simulation barrier.
+
+## Disclaimer
+
+This project is a personal exploration of quantum topology that I develop in my spare time. It is not associated with my professional affiliation.
