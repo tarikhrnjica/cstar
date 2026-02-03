@@ -170,4 +170,4 @@ This creates a recursive hierarchy where the quantum state *is* the logic graph,
 
 ## Disclaimer
 
-This project is a personal exploration of quantum topology that I pursue in my spare time. It is not associated with my professional affiliation.
+C* is a personal exploration of quantum topology that I pursue in my spare time. It is not associated with my professional affiliation.
