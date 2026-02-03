@@ -16,7 +16,7 @@ As quantum computers scale, it becomes convenient to transition from an imperati
 
 Compared to traditional circuit-centric languages, C* offers several distinct advantages:
 
-- **Hardware independence:** Specialized compilers can optimize logic for different hardware implementations or even native topological braids without any code changes.
+- **Hardware independence:** Specialized compilers can optimize logic for different hardware implementations or even native topological braiding and fusion operations without any code changes.
 - **Atomic abstraction:** Shifting the fundamental unit from qubits to contexts prevents low-level indexing errors and enforces physical semantics.
 - **Compile-time safety:** Impossible states are caught as syntax errors, rather than failing silently as runtime noise.
 - **Native quantum logic:** Uncertainty and contextuality move from post-processing statistics directly into the underlying logic.
@@ -85,7 +85,7 @@ This allows the program to deal with Heisenberg uncertainty not as a runtime err
 
 The C* compiler does not merely transliterate source code into gate sequences; it acts as a **homological geometer**. By viewing your program as a topology, it finds the global section that satisfies your constraints.
 
-More formally, the compiler constitutes a functor $\mathcal{F}: \mathcal{V}(\mathcal{H}) \to \mathrm{Circ}$ between the category of contexts and the category of quantum circuits, mapping categorical logic into physical operations. 
+More formally, the compiler constitutes a functor $\mathcal{F}: \mathcal{V}(\mathcal{H}) \to \mathrm{Circ}$ between the category of contexts and the category of quantum circuits, digesting categorical logic into physical operations. 
 
 ### Steps
 
@@ -125,7 +125,7 @@ In other words, it solves for the optimal path of unitary gates (basis rotations
 By simply modifying the metric induced by the Laplacian $\Delta$ used during step 4, C* can output optimal gate sequences for radically different architectures without altering the source code.
 
 - **Transmon:** The Laplacian is weighted to penalize geometric distance on the superconducting chip lattice. The compiler minimizes "stretching", effectively reducing the number of `swap` gates that destroy coherence.
-- **Ion trap:** The Laplacian is weighted to maximize the dimension of simplicial faces. This encourages the compiler to use native Mølmer-Sørensen (MS) gates (entangling $n$ ions at once) rather than breaking logic into pairwise CNOTs, reducing phonon mode crowding that would heat up the trap.
+- **Ion trap:** Here, the Laplacian is weighted to maximize the dimension of simplicial faces. This encourages the compiler to use native Mølmer-Sørensen (MS) gates (entangling $n$ ions at once) rather than breaking logic into pairwise CNOTs, reducing phonon mode crowding that would heat up the trap.
 - **Neutral atom:** The compiler resolves the optimal graph embedding coordinates. Instead of routing signals, it minimizes the kinetic energy of the optical tweezers, hence rearranging the atoms to match the logic graph.
 
 Furthermore, when targeting **topological quantum computers** (e.g., Majorana fermions), the compiler replaces the backend functor entirely. While the previously described functor $\mathcal{F}$ uses sheaf cohomology as the invariant and outputs unitary gates, the topological analogue
@@ -155,10 +155,9 @@ In a surface code, the decoder identifies syndromes (topological defects) and at
 
 For small systems, the cohomology checks can run on a classical CPU. However, the dimension of the Hilbert space grows exponentially, rendering classical verification of large systems intractable.
 
-Fortunately, C* can (at least in theory) be bootstrapped on a QPU to efficiently compile its own logic:
+Fortunately, C* can be bootstrapped on a QPU to efficiently compile its own logic:
 
 1. Step 3 requires inverting the Laplacian matrix. While classically this runs at cubic complexity, the **Harrow–Hassidim–Lloyd (HHL) algorithm** can perform this in logarithmic time.
 2. Step 2 needs to diagonalize the observables that define each context. The **quantum phase estimation (QPE) algorithm** replaces classical eigendecomposition, collapsing wavefunctions into their spectral components natively.
 
-This creates a recursive hierarchy where the quantum state *is* the logic graph, "cooled" to its ground state (consistent logic) via quantum annealing or variational circuits.
-
+This creates a recursive hierarchy where the quantum state *is* the logic graph, "cooled" to its ground state (consistent logic) via quantum annealing or variational circuits. While the space complexity of the check roughly equals that of the logic itself, the time complexity (depth) scales polylogarithmically, breaking the classical simulation barrier.
