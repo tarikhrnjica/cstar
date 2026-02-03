@@ -9,7 +9,7 @@ version = "0.1.0"
 default = ["dev"]
 
 [tasks]
-license = "licenseheaders -t HEADER -d cstar/"
+license = "licenseheaders -t HEADER -d cstar/ -x '**/__init__.py'"
 
 [dependencies]
 ruff = ">=0.14.14,<0.15"
