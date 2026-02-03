@@ -5,7 +5,8 @@ name = "c-star"
 platforms = ["osx-arm64"]
 version = "0.1.0"
 
-[tasks]
+[environments]
+default = ["dev"]
 
 [dependencies]
 ruff = ">=0.14.14,<0.15"
