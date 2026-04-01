@@ -124,7 +124,9 @@ This prevents the construction of physically impossible circuits by raising a co
 
 The Abramsky-Brandenburger sheaf-theoretic formulation of contextuality proves that quantum mechanics is inherently contextual. Therefore, an obstruction in the **Boolean (classical) global section** is actually expected in many quantum algorithms; this is exactly what generates non-local phenomena like Bell or GHZ states.
 
-C* explicitly distinguishes between this valid quantum contextuality and genuine logical errors. The compiler checks if a *wavefunction* (Hilbert space global section) exists, not if a *hidden variable* (Boolean global section) exists. C* embraces the topological twist of quantum supremacy. It only raises a compilation error when the constraints yield a genuine **algebraic contradiction** within the Hilbert space itself, preventing the construction of a physically impossible circuit.
+C* explicitly distinguishes between this valid quantum contextuality and genuine logical errors. The compiler checks if a *wavefunction* (Hilbert space global section) exists, not if a *hidden variable* (Boolean global section) exists.
+
+This language embraces the topological twist of quantum supremacy. It only raises a compilation error when the constraints yield a genuine **algebraic contradiction** within the Hilbert space itself, preventing the construction of a physically impossible circuit.
 
 #### 4. Circuit synthesis
 
@@ -180,7 +182,9 @@ This creates a recursive hierarchy where the quantum state *is* the logic graph,
 
 **Remark: Bootstrapping Paradox**
 
-It must be acknowledged that this self-hosting mechanism relies on a classic compiler bootstrapping paradox. Because both HHL and QPE require deep, fault-tolerant circuits, the C* compiler assumes the existence of mature quantum hardware to run. For near-term (NISQ) devices, C* must rely on classical simulation to compute the sheaf cohomology, meaning that until deep fault-tolerance is achieved, the compiler will hit an exponential memory wall, restricting its use to relatively small, few-qubit programs.
+It must be acknowledged that this self-hosting mechanism runs into a classic compiler bootstrapping paradox. Because both HHL and QPE require deep, reliable circuits, the C* compiler assumes the existence of mature quantum hardware to run. 
+
+For near-term (NISQ) devices, C* must rely on classical simulation to compute the sheaf cohomology, meaning that until high fault-tolerance is achieved, the compiler will hit an exponential memory wall, restricting its use to relatively small, few-qubit programs.
 
 ## Disclaimer
 
