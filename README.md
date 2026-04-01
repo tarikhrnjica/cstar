@@ -52,7 +52,7 @@ with ctx_x:
     maybe_spin_up = ~spin_up
 ```
 
-Instead of manually applying a Hadamard gate to create superposition, the developer simply asserts a truth ("spin is up") in the Z-context and then frames that same truth from within the X-context. Importantly, the `measure()` method combined with the `==` operator does not trigger an active, runtime wavefunction collapse. Rather, it is an overloaded operator that acts as a compile-time assertion—binding the logic to a specific topological section. The compiler automatically invokes the spectral theorem, degrading the sharp truth of the Z-basis into a probabilistic sieve in the X-basis.
+Instead of manually applying a Hadamard gate to create superposition, the developer simply asserts a truth ("spin is up") in the Z-context and then frames that same truth from within the X-context. Importantly, the `measure()` method combined with the `==` operator does not trigger an active, runtime wavefunction collapse. Rather, it is an overloaded operator that acts as a compile-time assertion, thus binding the logic to a specific topological section. The compiler automatically invokes the spectral theorem, degrading the sharp truth of the Z-basis into a probabilistic sieve in the X-basis.
 
 ## Types
 
