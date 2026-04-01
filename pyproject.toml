@@ -1,6 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cstar"
+version = "0.1.0"
+description = "A logic-centric Python DSL for quantum computing."
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{name = "Tarik Hrnjica", email = "tarik.hrnjica@gmail.com"}]
+dependencies = [
+    "numpy>=2.4.2",
+]
+
+[tool.pixi.project]
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "linux-64"]
+
+[tool.pixi.environments]
+default = ["dev"]
+
+[tool.pixi.tasks]
+bench = "pytest benchmarks"
+check = "ruff check . && mypy src"
+license = "licenseheaders -t HEADER -d src/cstar/ -x '**/__init__.py'"
+test = "pytest tests"
+
+[tool.pixi.feature.dev.pypi-dependencies]
+licenseheaders = "*"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [tool.ruff]
 line-length = 88
 
-[tool.ruff.format]
-quote-style = "double"
-indent-style = "space"
+[tool.mypy]
+strict = true
+mypy_path = "src"
