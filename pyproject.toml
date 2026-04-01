@@ -26,6 +26,9 @@ check = "ruff check . && mypy src"
 license = "licenseheaders -t HEADER -d src/cstar/ -x '**/__init__.py'"
 test = "pytest tests"
 
+[tool.pixi.pypi-dependencies]
+cstar = { path = ".", editable = true }
+
 [tool.pixi.feature.dev.pypi-dependencies]
 licenseheaders = "*"
 
@@ -34,6 +37,12 @@ where = ["src"]
 
 [tool.ruff]
 line-length = 88
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "TID"]
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
 
 [tool.mypy]
 strict = true
