@@ -120,7 +120,10 @@ Before generating a quantum gate, the compiler calculates the **sheaf cohomology
 
 This prevents the construction of physically impossible circuits by raising a compilation error.
 
-> **Note:** The compiler tests whether a *wavefunction* exists, not if a *hidden variable* exists. A state like GHZ is contextual (classically impossible), but algebraically sound (quantumly possible). C* permits this topological twist (the source of quantum supremacy) and only throws an error for breaks, where constraints yield a genuine algebraic contradiction (like the Mermin paradox).
+**Remark: Contextuality vs. Contradiction**
+The Abramsky-Brandenburger sheaf-theoretic formulation of contextuality proves that quantum mechanics is inherently contextual. Therefore, an obstruction in the **Boolean (classical) global section** is actually expected in many quantum algorithms; this is exactly what generates non-local phenomena like Bell or GHZ states.
+
+C* explicitly distinguishes between this valid quantum contextuality and genuine logical errors. The compiler checks if a *wavefunction* (Hilbert space global section) exists, not if a *hidden variable* (Boolean global section) exists. C* embraces the topological twist of quantum supremacy. It only raises a compilation error when the constraints yield a genuine **algebraic contradiction** within the Hilbert space itself, preventing the construction of a physically impossible circuit.
 
 #### 4. Circuit synthesis
 
