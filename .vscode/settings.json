@@ -11,7 +11,10 @@
       "source.organizeImports.ruff": "explicit"
     }
   },
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportImportCycles": "error"
+  },
   "python-envs.pythonProjects": [],
   "python.defaultInterpreterPath": "${workspaceFolder}/.pixi/envs/default/bin/python",
-  "python.terminal.activateEnvironment": true
+  "python.terminal.activateEnvironment": true,
 }
