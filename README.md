@@ -74,7 +74,7 @@ Instead of `bool`, we use the `Sieve` type. This reflects the switch from propos
 - `Sieve(Context)`: The core unit of logic. A sieve is a topological set indicating *where* in the context graph (measurement setup) a specific statement holds.
 - `Sieve.Max`: The maximal sieve (identity), which is universally true in all contexts (e.g., global constants). Corresponds to `True`.
 - `Sieve.Min`: The minimal sieve (empty set), which is true in no context. Corresponds to `False`.
-- `Sieve.Undefined`: Symbolizes a proposition that cannot be formulated in the current context (such as asking for the precise position value while observing momentum).
+- `Sieve.Undefined`: Symbolizes a proposition that cannot be formulated in the current context (such as asking for the precise position value while observing momentum). In practice, this serves as an internal compile-time trigger rather than a developer-facing type; when a statement evaluates to `Undefined`, the compiler automatically invokes daseinisation to gracefully cast the proposition into a valid, coarse-grained `Sieve`.
 
 > **Note:** Unlike Birkhoff-von Neumann logic, which is based on nondistributive orthomodular lattices, C* maintains distributivity at the expense of the law of the excluded middle.
 
