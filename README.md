@@ -38,7 +38,9 @@ ctx_x = Context("X", [PauliX])
 
 # 3. Specify the logic
 with ctx_z:
-    # This is a local section of the presheaf
+    # This is a local section of the presheaf.
+    # Note: '==' is an operator overload that registers a compile-time
+    # truth constraint, effectively acting as a functional assertion.
     spin_up = (qubits.measure() == +1)
 
 # 4. Change the context (daseinisation)
@@ -50,7 +52,7 @@ with ctx_x:
     maybe_spin_up = ~spin_up
 ```
 
-Instead of manually applying a Hadamard gate to create superposition, the developer simply asserts a truth ("spin is up") in the Z-context and then frames that same truth from within the X-context. The compiler automatically invokes the spectral theorem, degrading the sharp truth of the Z-basis into a probabilistic sieve in the X-basis.
+Instead of manually applying a Hadamard gate to create superposition, the developer simply asserts a truth ("spin is up") in the Z-context and then frames that same truth from within the X-context. Importantly, the `measure()` method combined with the `==` operator does not trigger an active, runtime wavefunction collapse. Rather, it is an overloaded operator that acts as a compile-time assertion—binding the logic to a specific topological section. The compiler automatically invokes the spectral theorem, degrading the sharp truth of the Z-basis into a probabilistic sieve in the X-basis.
 
 ## Types
 
