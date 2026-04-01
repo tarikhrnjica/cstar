@@ -121,6 +121,7 @@ Before generating a quantum gate, the compiler calculates the **sheaf cohomology
 This prevents the construction of physically impossible circuits by raising a compilation error.
 
 **Remark: Contextuality vs. Contradiction**
+
 The Abramsky-Brandenburger sheaf-theoretic formulation of contextuality proves that quantum mechanics is inherently contextual. Therefore, an obstruction in the **Boolean (classical) global section** is actually expected in many quantum algorithms; this is exactly what generates non-local phenomena like Bell or GHZ states.
 
 C* explicitly distinguishes between this valid quantum contextuality and genuine logical errors. The compiler checks if a *wavefunction* (Hilbert space global section) exists, not if a *hidden variable* (Boolean global section) exists. C* embraces the topological twist of quantum supremacy. It only raises a compilation error when the constraints yield a genuine **algebraic contradiction** within the Hilbert space itself, preventing the construction of a physically impossible circuit.
@@ -176,6 +177,10 @@ Fortunately, C* can be bootstrapped on a QPU to efficiently compile its own logi
 2. Step 2 needs to diagonalize the observables that define each context. The **quantum phase estimation (QPE) algorithm** replaces classical eigendecomposition, collapsing wavefunctions into their spectral components natively.
 
 This creates a recursive hierarchy where the quantum state *is* the logic graph, "cooled" to its ground state (consistent logic) via quantum annealing or variational circuits. While the space complexity of the check roughly equals that of the logic itself, the time complexity (depth) scales polylogarithmically, breaking the classical simulation barrier.
+
+**Remark: Bootstrapping Paradox**
+
+It must be acknowledged that this self-hosting mechanism relies on a classic compiler bootstrapping paradox. Because both HHL and QPE require deep, fault-tolerant circuits, the C* compiler assumes the existence of mature quantum hardware to run. For near-term (NISQ) devices, C* must rely on classical simulation to compute the sheaf cohomology, meaning that until deep fault-tolerance is achieved, the compiler will hit an exponential memory wall, restricting its use to relatively small, few-qubit programs.
 
 ## Disclaimer
 
